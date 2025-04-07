@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      // Allows for importing with an alias.
+      // src/lib = @/lib
+      "@/*": ["./src/*"]
+    },
+    "types": [
+      "@cloudflare/workers-types/2023-07-01"
+    ],
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
