@@ -1,13 +1,9 @@
 import type { PinoLogger } from "hono-pino";
 
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { config } from "dotenv";
-import { expand } from "dotenv-expand";
-import { notFound, onError } from "stoker/middlewares";
+import { notFound, onError, serveEmojiFavicon } from "stoker/middlewares";
 
 import { pinoLogger } from "./middlewares/pino-logger";
-
-expand(config());
 
 interface AppBindings {
   Variables: {
@@ -16,6 +12,7 @@ interface AppBindings {
 }
 
 const app = new OpenAPIHono<AppBindings>();
+app.use(serveEmojiFavicon("✝️"));
 app.use(pinoLogger());
 
 app.get("/", (c) => {
